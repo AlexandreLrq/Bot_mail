@@ -40,12 +40,16 @@ async def _del(ctx, source_mail):
 
 @bot.command(name="maj")
 async def _maj(ctx):
+    liste = []
     await bot.get_channel(ctx.channel.id).purge(limit=None)
     await ctx.send(f"Dernière MAJ le {datetime.datetime.now().strftime('%d/%m/%Y')}")
     liste_redirections = client.get(f'/email/domain/{domaine}/redirection')
     for i in liste_redirections:
         redirection = client.get(f'/email/domain/{domaine}/redirection/{i}')
-        await ctx.send(redirection["from"])
+        liste.append(redirection["from"])
+    liste.sort()
+    for i in liste:
+        await ctx.send(i)
 
 
 @bot.command(name="clear")
