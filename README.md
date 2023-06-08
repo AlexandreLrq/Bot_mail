@@ -1,8 +1,8 @@
-## Bot_mail
+# Bot_mail
 
-### Installation
+# Installation
 
-# Installation manuelle
+## Installation manuelle
 
 1. Assurez-vous d'avoir Python 3.10 installé sur votre machine. Vous pouvez le télécharger depuis le site officiel de Python : https://www.python.org/downloads/.
 2. Clonez ce dépôt GitHub sur votre machine en utilisant la commande suivante : ``git clone https://github.com/AlexandreLrq/Bot_mail``
