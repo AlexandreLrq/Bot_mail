@@ -20,6 +20,7 @@ destination_mail = config.ADRESSE_MAIL
 
 async def maj(ctx):
     liste = []
+    message = ""
     await bot.get_channel(ctx.channel.id).purge(limit=None)
     await ctx.send(f"MAJ le {datetime.datetime.now().strftime('%d/%m/%Y')}")
     liste_redirections = client.get(f'/email/domain/{domaine}/redirection')
@@ -28,11 +29,12 @@ async def maj(ctx):
         liste.append(redirection["from"])
     liste.sort()
     for i in liste:
-        await ctx.send(i)
+        message += i + "\n"
+    await ctx.send(message)
     await ctx.send("-" * 30)
 
 
-@bot.command(name='new')
+@bot.command(name="new")
 async def _new(ctx, source_mail):
     try:
         client.post('/email/domain/{}/redirection'.format(domaine), **{
